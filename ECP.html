@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let n=1073;
+        let text = 'ПУШКАРЕВ';
+        let M = [];
+        for (let i of text) {
+            M.push(i.charCodeAt(0) - 1039)
+        }
+        //let H0=6;
+        let H=[6];
+        for (let i=1;i<=M.length;i++){
+            H[i]=Math.pow(H[i-1]+M[i-1],2)%n
+        }
+        let step1=0;
+        let h_step=BigInt(H[H.length-1]);
+        let s_step=1n;
+        while (step1!=11){
+            step1++
+            s_step=s_step*h_step
+        }
+        let s_result=s_step%1073n
+        //let s=BigInt(Math.pow(H[H.length-1],11)%n);
+        let step=0;
+        let h1=1n;
+        while (step!=275){
+            step++
+            h1=h1*s_result
+        }
+        let result=h1%1073n
+        console.log(M)
+        console.log(H)
+        console.log(H[H.length-1])
+        console.log(s_result)
+        console.log(result)
+    </script>
+</body>
+</html>

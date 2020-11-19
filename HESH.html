@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let text = 'ПУШКАРЕВ';
+        let M = [];
+        for (let i of text) {
+            M.push(i.charCodeAt(0) - 1039)
+        }
+        //let H0=6;
+        let H=[6];
+        for (let i=1;i<=M.length;i++){
+            H[i]=Math.pow(H[i-1]+M[i-1],2)%5293
+        }
+        console.log(M)
+        console.log(H)
+        console.log(H[H.length-1])
+    </script>
+</body>
+</html>

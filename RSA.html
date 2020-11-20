@@ -1,72 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
-        //let C1=Math.pow(16,247)%5293;
-        let stepC1=0;
-        let B1_step=16n;
-        let C1_step=1n;
-        while (stepC1!=271){
+        let text = 'ППВ';
+        let M = [];
+        for (let i of text) {
+            M.push(i.charCodeAt(0) - 1039)
+        }
+        console.log('Сообщение', text)
+        console.log('Последовательность: ', M)
+        let p=79;
+        let q=67;
+        console.log('p', p)
+        console.log('q', q)
+        let d = 19;
+        console.log('d', d)
+        let fe = (q - 1) * (p - 1);
+        let e = 1;
+        let k = 1;
+            while (e < fe) {
+                if ((e * d - 1) %fe == 0) break
+                e++
+            }
+        //console.log('так как надо', e)
+        console.log('открытый ключ', e, p*q)
+        console.log('секретный ключ', d, p*q)
+
+        let stepC1 = 0;
+        let B1_step = 16n;
+        let C1_step = 1n;
+        while (stepC1 != 271) {
             stepC1++
-            C1_step=C1_step*B1_step
+            C1_step = C1_step * B1_step
         }
-        let C1=C1_step%5293n
-        //let C2=Math.pow(16,247)%5293;
-        let stepC2=0;
-        let B2_step=16n;
-        let C2_step=1n;
-        while (stepC2!=271){
+        let C1 = C1_step % 5293n
+
+        let stepC2 = 0;
+        let B2_step = 16n;
+        let C2_step = 1n;
+        while (stepC2 != 271) {
             stepC2++
-            C2_step=C2_step*B2_step
+            C2_step = C2_step * B2_step
         }
-        let C2=C2_step%5293n
-        //let C3=Math.pow(3,247)%5293;
-        let stepC3=0;
-        let B3_step=3n;
-        let C3_step=1n;
-        while (stepC3!=271){
+        let C2 = C2_step % 5293n
+        let stepC3 = 0;
+        let B3_step = 3n;
+        let C3_step = 1n;
+        while (stepC3 != 271) {
             stepC3++
-            C3_step=C3_step*B3_step
+            C3_step = C3_step * B3_step
         }
-        let C3=C3_step%5293n;
-        console.log(C1)
-        console.log(C2)
-        console.log(C3)
-        //let M1=Math.pow(Math.pow(16,247)%5293,19)%5293;
-        let stepM1=0;
-        let R1_step=C1;
-        let M1_step=1n;
-        while (stepM1!=19){
+        let C3 = C3_step % 5293n;
+
+        let stepM1 = 0;
+        let R1_step = C1;
+        let M1_step = 1n;
+        while (stepM1 != 19) {
             stepM1++
-            M1_step=M1_step*R1_step
+            M1_step = M1_step * R1_step
         }
-        let M1=M1_step%5293n
-        //let M2=Math.pow(Math.pow(16,247)%5293,19)%5293;
-        let stepM2=0;
-        let R2_step=C2;
-        let M2_step=1n;
-        while (stepM2!=19){
+        let M1 = M1_step % 5293n
+
+        let stepM2 = 0;
+        let R2_step = C2;
+        let M2_step = 1n;
+        while (stepM2 != 19) {
             stepM2++
-            M2_step=M2_step*R2_step
+            M2_step = M2_step * R2_step
         }
-        let M2=M2_step%5293n
-        //let M3=Math.pow(Math.pow(3,247)%5293,19)%5293;
-        let stepM3=0;
-        let R3_step=C3;
-        let M3_step=1n;
-        while (stepM3!=19){
+        let M2 = M2_step % 5293n
+
+        let stepM3 = 0;
+        let R3_step = C3;
+        let M3_step = 1n;
+        while (stepM3 != 19) {
             stepM3++
-            M3_step=M3_step*R3_step
+            M3_step = M3_step * R3_step
         }
-        let M3=M3_step%5293n
-        console.log(M1)
-        console.log(M2)
-        console.log(M3)
+        let M3 = M3_step % 5293n
+        console.log('Зашифрованное сообщение', Number(C1), Number(C2), Number(C3))
+        console.log('Расшифрованное сообщение', Number(M1), Number(M2), Number(M3))
     </script>
 </body>
+
 </html>

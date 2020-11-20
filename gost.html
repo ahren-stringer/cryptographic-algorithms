@@ -10,6 +10,9 @@
 <body>
     <script>
         let text = 'ПУШКАРЕВ';
+        console.log("Текст",text)
+        let podKey = 'ВЯЧЕ';
+        console.log('Подключ: ',podKey)
         let text_2 = '';
         for (let i of text) {
             text_2 += (i.charCodeAt(0) - 848).toString(2)
@@ -17,18 +20,22 @@
         let textArr = text_2.split('');
         let R = text_2.slice(32, 64);
         let L = text_2.slice(0, 32);
+        console.log('L0',L)
+        console.log('R0',R)
 
-        let podKey = 'ВЯЧЕ';
         let X = '';
         for (let i of podKey) {
             X += (i.charCodeAt(0) - 848).toString(2)
         }
+        console.log('X0',X)
         let S = (parseInt(X, 2) + parseInt(R, 2)).toString(2).split('');
         S.shift()
+        console.log('Сложение', S.join(''))
         let podstArr = []
         for (let i = 0; i < (S.length / 4); i++) {
             podstArr[i] = parseInt(S.slice((i * 4), (i + 1) * 4).join(''), 2)
         }
+        console.log('В десятичном виде:',podstArr)
         let podstTabl = [
             [1, 13, 4, 6, 7, 5, 14, 4],
             [15, 11, 11, 12, 13, 8, 11, 10],
@@ -49,29 +56,26 @@
         ];
         let elemZamen = [];
         for (let i = 0; i < podstArr.length; i++) {
+            elemZamen[i] = (podstTabl[podstArr[i]][i])
+        }
+        console.log('Элементы замены',elemZamen)
+        for (let i = 0; i < podstArr.length; i++) {
             elemZamen[i] = (podstTabl[podstArr[i]][i]).toString(2)
         }
-
         for (let i = 0; i < elemZamen.length; i++) {
             while (elemZamen[i].length < 4) {
                 elemZamen[i] = '0' + elemZamen[i]
             }
         }
+        console.log('Элементы замены',elemZamen)
         let sdvig = elemZamen.join('');
         let sdvig11 = sdvig.slice(11, 32) + sdvig.slice(0, 11);
+        console.log('Сдвиг на 11 бит влево',sdvig11)
         let result = (parseInt(sdvig11, 2) ^ parseInt(L, 2)).toString(2)
         while (result.length < 32) {
             result = '0' + result
         }
-        console.log('R ', R)
-        console.log('X ', X)
-        console.log('S', S)
-        console.log(podstArr)
-        console.log(elemZamen)
-        console.log(sdvig)
-        console.log(sdvig11)
-        console.log(L)
-        console.log(result)
+        console.log('Результат',result)
     </script>
 </body>
 

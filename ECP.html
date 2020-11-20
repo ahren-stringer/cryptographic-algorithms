@@ -7,17 +7,36 @@
 </head>
 <body>
     <script>
-        let n=1073;
         let text = 'ПУШКАРЕВ';
+        console.log('Текст',text)
+        let p=37;
+        let q=29;
+        console.log('p', p)
+        console.log('q', q)
+        let n=p*q;
+        let d = 11;
+        console.log('d', d)
+        let fe = (q - 1) * (p - 1);
+        let e = 1;
+        let k = 1;
+            while (e < fe) {
+                if ((e * d - 1) %fe == 0) break
+                e++
+            }
+        
         let M = [];
         for (let i of text) {
             M.push(i.charCodeAt(0) - 1039)
         }
-        //let H0=6;
+        console.log('Последовательность чисел',M)
         let H=[6];
+        console.log('Вектор инициализации',H[0])
         for (let i=1;i<=M.length;i++){
             H[i]=Math.pow(H[i-1]+M[i-1],2)%n
+            console.log('H'+i,H[i])
         }
+        console.log('открытый ключ', e, p*q)
+        console.log('секретный ключ', d, p*q)
         let step1=0;
         let h_step=BigInt(H[H.length-1]);
         let s_step=1n;
@@ -25,8 +44,7 @@
             step1++
             s_step=s_step*h_step
         }
-        let s_result=s_step%1073n
-        //let s=BigInt(Math.pow(H[H.length-1],11)%n);
+        let s_result=s_step%1073n;
         let step=0;
         let h1=1n;
         while (step!=275){
@@ -34,11 +52,9 @@
             h1=h1*s_result
         }
         let result=h1%1073n
-        console.log(M)
-        console.log(H)
-        console.log(H[H.length-1])
-        console.log(s_result)
-        console.log(result)
+        console.log('Хэш-образ',H[H.length-1])
+        console.log('Электронная подпись',Number(s_result))
+        console.log('Результат проверки',Number(result))
     </script>
 </body>
 </html>

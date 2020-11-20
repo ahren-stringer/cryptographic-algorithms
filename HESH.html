@@ -8,18 +8,23 @@
 <body>
     <script>
         let text = 'ПУШКАРЕВ';
+        console.log('Текст',text)
+        let p=79;
+        let q=67;
+        console.log('p', p)
+        console.log('q', q)
         let M = [];
         for (let i of text) {
             M.push(i.charCodeAt(0) - 1039)
         }
-        //let H0=6;
+        console.log('Последовательность чисел',M)
         let H=[6];
+        console.log('Вектор инициализации',H[0])
         for (let i=1;i<=M.length;i++){
-            H[i]=Math.pow(H[i-1]+M[i-1],2)%5293
+            H[i]=Math.pow(H[i-1]+M[i-1],2)%(p*q)
+            console.log('H'+i,H[i])
         }
-        console.log(M)
-        console.log(H)
-        console.log(H[H.length-1])
+        console.log('Хэш-образ',H[H.length-1])
     </script>
 </body>
 </html>
